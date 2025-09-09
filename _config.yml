@@ -27,7 +27,7 @@ url: "https://cl4r1ty.tech" # the base hostname & protocol for your site, e.g. h
 github_username:  Cl4r1ty-1
 
 # Build settings
-theme: minima
+theme: jekyll-theme-hacker
 plugins:
   - jekyll-feed
 
