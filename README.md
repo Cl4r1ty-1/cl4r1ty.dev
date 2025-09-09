@@ -1,2 +1,3 @@
-# cl4r1ty.tech
-maybe my website soon idk
+# cl4r1ty.dev
+
+A basic blog site made with Jekyll and GitHub pages :)
