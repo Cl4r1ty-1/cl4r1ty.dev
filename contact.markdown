@@ -5,7 +5,7 @@ permalink: /about/contact
 ---
 
 ## Email
-Contact me via email [ben@cl4r1ty.dev](mailto:ben@cl4r1ty.dev)
+Contact me via email: ben [at] cl4r1ty [dot] dev
 
 ## Signal
 Contact me on Signal using @cl4r1ty.18
