@@ -62,7 +62,7 @@ layout: default
 					{% assign tags = 'class="subgroup" writeupType="Subgroup"' %}
 					{% assign link_text = next_level | replace: '\-', 'PLACEHOLDERDASH' | replace: '-', ' ' | replace: 'PLACEHOLDERDASH', '-'%}
 				{% endif %}
-				<li {{ tags }}><a href="{{ page.url | append: next_level | split: '.' | first | relative_url}}" title="Goes to {{ link_text }} writeup">{{ link_text }}</a></li>
+				<li {{ tags }}><a href="{{ next_level | split: '.' | first }}" title="Goes to {{ link_text }} writeup">{{ link_text }}</a></li>
 			{% endunless %}
 		{% endif %}
 	{% endfor %}
