@@ -7,7 +7,7 @@ layout: default
 <p>I still need to port all of my writeups to this site</p>
 <p>For now, if you would like to see my writeups, head to <a href="https://github.com/Cl4r1ty-1/CTF">this</a> GitHub repo</p>
 
-{% assign path = page.path | split: "/" | shift %}
+{% assign path = page.path | split: "/" %}
 {% assign path_length = path | size %}
 {% if path_length > 0 %}
 	{% assign path_length = path_length | minus: 1%}
@@ -31,9 +31,10 @@ layout: default
 	{% assign child_names = "" | split: "" %}
 
 	{% for writeup in site.writeups %}
-		{% assign segments = writeup.path | split: "/" | shift %}
+	{% assign segments = writeup.path | split: "/" %}
 
-		{% if segments[-1] == "index.markdown" %}
+		{% assign last_segment = segments | last %}
+		{% if last_segment == "index.markdown" %}
 			{% continue %}
 		{% endif %}
 
@@ -51,10 +52,16 @@ layout: default
 
 		{% if is_in_current_path %}
 			{% assign next_level = segments[path_length] %}
-			{% unless child_names contains next_level %}
+			{% assign already_in_child_names = false %}
+			{% for name in child_names %}
+				{% if name == next_level %}
+					{% assign already_in_child_names = true %}
+				{% endif %}
+			{% endfor %}
+			{% unless already_in_child_names %}
 				{% assign child_names = child_names | push: next_level %}
-				{% assign class_name = "" %}			
-				{% if next_level == segments[-1] %}
+				{% assign class_name = "" %}
+				{% if next_level == last_segment %}
 					{% assign first_type = writeup.tags | first %}
 					{% assign tags = 'class="writeups" writeupType="' | append: first_type | append: '"' %}
 					{% assign link_text = writeup.title %}

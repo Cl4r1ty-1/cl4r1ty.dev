@@ -1,5 +1,5 @@
 ---
 layout: writeup-index
-permalink: /writeups/DownUnderCTF%202025/
+permalink: /writeups/DownUnderCTF 2025/
 ---
 
