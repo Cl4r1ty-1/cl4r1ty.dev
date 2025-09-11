@@ -6,3 +6,64 @@ layout: default
 
 <p>I still need to port all of my writeups to this site</p>
 <p>For now, if you would like to see my writeups, head to <a href="https://github.com/Cl4r1ty-1/CTF">this</a> GitHub repo</p>
+
+{% assign path = page.path | split: "/" | shift %}
+{% assign path_length = path | size %}
+{% if path_length > 0 %}
+	{% assign path_length = path_length | minus: 1%}
+	{% assign path = path | slice: 0, path_length %}
+{% endif %}
+
+{% assign header_title = "" %}
+{% for segment in path %}
+	{% if forloop.first == false %}
+		{% assign header_title = header_title | append: " - " %}
+	{% endif %}
+	{% assign seg = segment | replace: "-", " " %}
+	{% assign header_title = header_title | append: seg %}
+{% endfor %}
+
+<h1>{{ header_title }}</h1>
+
+{{ content }}
+
+<ul id="index">
+	{% assign child_names = "" | split: "" %}
+
+	{% for writeup in site.writeups %}
+		{% assign segments = writeup.path | split: "/" | shift %}
+
+		{% if segments[-1] == "index.markdown" %}
+			{% continue %}
+		{% endif %}
+
+		{% assign is_in_current_path = true %}
+		{% assign iter_max = path_length | minus: 1 %}
+		{% for i in (0..iter_max) %}
+			{% if segments[i] != path[i] %}
+				{% assign is_in_current_path = false %}
+			{% endif %}
+		{% endfor %}
+
+		{% if path_length == 0 %}
+			{% assign is_in_current_path = true %}
+		{% endif %}
+
+		{% if is_in_current_path %}
+			{% assign next_level = segments[path_length] %}
+			{% unless child_names contains next_level %}
+				{% assign child_names = child_names | push: next_level %}
+				{% assign class_name = "" %}			
+				{% if next_level == segments[-1] %}
+					{% assign first_type = writeup.tags | first %}
+					{% assign tags = 'class="writeups" writeupType="' | append: first_type | append: '"' %}
+					{% assign link_text = writeup.title %}
+				{% else %}
+					{% assign tags = 'class="subgroup" writeupType="Subgroup"' %}
+					{% assign link_text = next_level | replace: '\-', 'PLACEHOLDERDASH' | replace: '-', ' ' | replace: 'PLACEHOLDERDASH', '-'%}
+				{% endif %}
+				<li {{ tags }}><a href="{{ next_level | split: '.' | first }}" title="Goes to {{ site.author}}'s {{ link_text }} writeup">{{ link_text }}</a></li>
+			{% endunless %}
+		{% endif %}
+	{% endfor %}
+</ul>
