@@ -5,7 +5,7 @@ tags: forensics
 ---
 
 #### QUICK DISCLAIMER:
-I did not solve this challenge during the competition, but since I got very close and found this challenge interesting, I re-attempted it after the CTF ended. This write-up is based on that attempt.
+I did not solve this part of the challenge during the competition, but since I got very close and found this challenge interesting, I re-attempted it after the CTF ended. This write-up is based on that attempt.
 
 #### Writeup:
 
