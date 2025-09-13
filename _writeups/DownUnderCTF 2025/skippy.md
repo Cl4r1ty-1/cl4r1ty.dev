@@ -32,7 +32,7 @@ int __cdecl main(int _Argc,char **_Argv,char **_Env)
   decrypt_bytestring((longlong)&local_28,&local_48,_Env,in_R9);
   return 0;
 }
-```
+{% endhighlight %}
 
 The decompiled main function looks something like this, we can see it defines a few variables and sends them to the `sandwich()` function, so we have a look at this function next.
 
@@ -45,7 +45,7 @@ void sandwich(char *param_1,undefined8 param_2,undefined8 param_3,undefined8 par
   stone(param_1,param_2,param_3,param_4);
   return;
 }
-```
+{% endhighlight %}
 
 The `sandwich` function just calls a couple of other functions with similar parameters. We decide to have a look at the `stone()` function next.
 
@@ -63,7 +63,7 @@ void stone(char *param_1,undefined8 param_2,undefined8 param_3,undefined8 param_
   s_Oh_no!_Skippy_is_about_to_trip!_14000b038[0] = *param_1;
   return;
 }
-```
+{% endhighlight %}
 
 This function is what will cause the program to crash as it attempts to write to read only memory (segfault), this means that we need to avoid `stone()` functions.
 
@@ -89,7 +89,7 @@ void decryptor(longlong param_1)
   }
   return;
 }
-```
+{% endhighlight %}
 
 The first part of this function will crash the program similar to one of the ways the `stone()` function does. The main part of the function we want to focus on is the for loop at the bottom. This will bit shift 16 bytes of the parameter to the right.
 
@@ -120,7 +120,7 @@ void decrypt_bytestring(longlong param_1,undefined8 *param_2,undefined8 param_3,
   puts((char *)local_30);
   return;
 }
-```
+{% endhighlight %}
 
 This appears to decrypt 96 bytes of data starting at the memory address `0x14000a000` using AES and the 2 parameters as the key and IV respectively. Lets take a look at the data at this address.
 
