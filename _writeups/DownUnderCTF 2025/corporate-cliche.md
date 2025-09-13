@@ -1,7 +1,7 @@
 ---
 layout: writeup
 title: Corporate Cliche
-tags: pwn, beginner
+tags: pwn beginner
 ---
 
 We are given a binary, some C source code and a remote instance to connect to.
