@@ -1,4 +1,4 @@
 ---
 layout: writeup-index
-permalink: /writeups
+permalink: /writeups/
 ---
