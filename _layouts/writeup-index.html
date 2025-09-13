@@ -2,11 +2,6 @@
 layout: default
 ---
 
-<h2>Under construction</h2>
-
-<p>I still need to port all of my writeups to this site</p>
-<p>For now, if you would like to see my writeups, head to <a href="https://github.com/Cl4r1ty-1/CTF">this</a> GitHub repo</p>
-
 {% assign path = page.path | split: "/" | shift %}
 {% assign path_length = path | size %}
 {% if path_length > 0 %}
@@ -64,6 +59,7 @@ layout: default
 					{% assign link_text = next_level | replace: '\-', 'PLACEHOLDERDASH' | replace: '-', ' ' | replace: 'PLACEHOLDERDASH', '-'%}
 				{% endif %}
 				<li {{ tags }}><a href="{{ next_level | split: '.' | first }}" title="Goes to {{ link_text }} writeup">{{ link_text }}</a></li>
+				<br>
 			{% endunless %}
 		{% endif %}
 	{% endfor %}
